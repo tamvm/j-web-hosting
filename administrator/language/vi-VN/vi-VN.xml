@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: vi-VN.xml 14401 2010-01-26 14:10:00Z buaxua.vn $ -->
+<metafile version="1.5" client="administrator">
+    <name>Tiếng Việt (Vietnamese)</name>
+    <version>1.5.23</version>
+    <creationDate>10-13-2010</creationDate>
+    <author>BuaXua.vn</author>
+    <authorEmail>contact@buaxua.vn</authorEmail>
+    <authorUrl>http://www.buaxua.vn</authorUrl>
+    <copyright>Copyright (C) 2005 Open Source Matters. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <description>Ngôn ngữ tiếng Việt cho Quản trị Joomla 1.5 (Back-end)</description>
+    <metadata>
+    	<name>Tiếng Việt (Vietnamese)</name>
+    	<tag>vi-VN</tag>
+    	<rtl>0</rtl>
+    	<locale>vi_VN.utf8, vi_VN.UTF-8, vi_VN, vi, VN, vietnam </locale>
+   		<winCodePage>utf-8</winCodePage>
+    	<backwardLang>vietnamese</backwardLang>
+    </metadata>
+    <params />
+</metafile>
