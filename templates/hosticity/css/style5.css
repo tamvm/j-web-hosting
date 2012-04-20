@@ -1,0 +1,90 @@
+#s5_number {
+color:#D1D1D1;
+font-size:1.5em;
+float:right;
+margin-right:30px;
+margin-top:11px;
+}
+
+h1, h2, h3, h4, h5, .contentheading, .componentheading, .createdate, #s5navfs a {
+color:#666666;
+}
+
+#s5_left_column_inner div.module-boxed_color h3, #s5_right_column_inner div.module-boxed_color h3, #s5_advert1 div.module-boxed_color h3, #s5_advert2 div.module-boxed_color h3 {
+font-size:12px;
+color:#666666;
+}
+
+#s5_left_column_inner div.module-boxed_color, #s5_right_column_inner div.module-boxed_color, #s5_advert1 div.module-boxed_color, #s5_advert2 div.module-boxed_color {
+height:100%;
+background:#F8F8F8;
+border:solid 1px #D1D1D1;
+margin-bottom:12px;
+}
+
+#s5_left_column_inner div.module-boxed_color div, #s5_right_column_inner div.module-boxed_color div, #s5_advert1 div.module-boxed_color div, #s5_advert2 div.module-boxed_color div {
+border:none;
+padding:15px;
+}
+
+#s5_left_column_inner div.module-boxed_color div div, #s5_right_column_inner div.module-boxed_color div div, #s5_advert1 div.module-boxed_color div div, #s5_advert2 div.module-boxed_color div div {
+padding:0px;
+}
+
+* html #s5_number {
+margin-right:15px;
+}
+
+#s5_menu_holder {
+background: url(../images/style5/s5_menu_line.png) repeat-x bottom center;
+}
+
+#navv {
+	width:100%;
+}
+
+#navv ul li ul li a:hover {
+background:none;
+}
+
+#navv a.active:hover, #navv a.active.sfhover {
+	color:#ffffff;
+}
+
+#navv ul li a {
+	margin-left:0px;
+	color:#ffffff;
+	font-size:0.75em;
+}
+
+#navv ul li ul li {
+	background:none;
+	}
+
+#navv ul li.active a.active {
+	background:url(../images/style5/s5_fa_act_r.png) no-repeat top right;
+	margin-left:0px;
+	color:#ffffff;
+}
+
+li.active .s5_rs  {
+	background:url(../images/style5/s5_fa_act_l.png) repeat-x top left;
+	float:left;
+	margin-left:0px;
+}
+
+#navv ul li ul li a, #navv ul li ul li a.active, #navv ul li ul li a:hover, #navv ul li ul li a.sfhover {
+	background-image:none;
+	color:#000000;
+	font-size:11px;
+	padding-left:12px;
+	font-weight:bold;
+}
+
+#navv ul li ul li:hover, #navv ul li ul li.sfhover {
+	color:#000000;
+}
+
+#navv ul li ul li a:hover, #navv ul li ul li a.sfhover {
+	text-decoration:underline;
+}

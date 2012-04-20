@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0">
+	<name>S5 Frontpage Slide</name>
+	<author>Shape5.com</author>
+	<creationDate>July 2008</creationDate>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL  Copyright 2008</license>
+	<authorEmail>contact@shape5.com</authorEmail>
+	<authorUrl>www.shape5.com</authorUrl>
+	<version>1.0.0</version>
+	<description>This module will display up to 10 Joomla modules in a Carousel style slide.</description>
+	<files>
+		<filename module="mod_s5_frontpageslide">mod_s5_frontpageslide.php</filename>
+                <filename>s5_frontpageslide/arrow.jpg</filename>
+				<filename>s5_frontpageslide/iCarousel.js</filename>
+				<filename>s5_frontpageslide/modules_03.png</filename>
+				<filename>s5_frontpageslide/modules_04.png</filename>
+				<filename>s5_frontpageslide/mootoolsv11.js</filename>
+				<filename>s5_frontpageslide/repeatback.jpg</filename>
+				<filename>s5_frontpageslide/styles.css</filename>
+				<filename>s5_frontpageslide/s5_effects_snap.js</filename>
+				<filename>s5_frontpageslide/s5_effects_fade.js</filename>
+	</files>
+	<params>
+        <param name="pretext" type="textarea" cols="40" rows="5" default="" label="Pre-Text" description="Enter any pre-text message." />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+            
+                <param name="s5_buttoncolumnwidth" type="text" default="200px" label="Button column width" description="Enter in pixels how wide you want the left column to be" />
+                <param name="s5_width" type="text" default="660px" label="Width" description="Enter the width of the S5 Front Slide." />
+				<param name="s5_height" type="text" default="230px" label="Height" description="Enter the height of the S5 Front Slide." />
+				<param name="s5_buttonheight" type="text" default="30px" label="Height of Buttons" description="Enter the height for the buttons." />
+				<param name="s5_lineheight" type="text" default="2.2em" label="Line-height of Buttons" description="Enter the height for the buttons to align them properly." />
+				<param name="s5_buttoncolor" type="text" default="transparent" label="Color used for button background" description="Enter a HEX color for the button background, enter 'transparent' for no color" />
+				<param name="s5_buttonimage" type="text" default="modules/mod_s5_frontpageslide/s5_frontpageslide/repeatback.jpg" label="Image used for button background" description="Enter the URL for an image you would like to show for the buttons." />	
+				<param name="s5_hovercolor" type="text" default="#FFFFFF" label="Color that shows on button hover" description="Enter a HEX color for the button background on hover, enter 'transparent' for no color" />		
+				<param name="s5_hoverimage" type="text" default="modules/mod_s5_frontpageslide/s5_frontpageslide/arrow.jpg" label="Image that shows on button hover" description="Enter the URL for an image you would like to show on button hover." />
+				<param name="s5_fontcolor" type="text" default="#000000" label="Color of Button Text" description="Enter a HEX color for the button font color" />			
+				<param name="s5_shadows" type="radio" default="1" label="Enable or disable the module shadows" >
+					<option value="1">Enable Shadows</option>
+					<option value="2">Disable Shadows</option>
+				</param>
+				<param name="s5_aligncolumn" type="radio" default="left" label="Select on which side you would like the buttons to show" >
+					<option value="left">Align Left Side</option>
+					<option value="right">Align Right Side</option>
+				</param>
+				
+				
+				<param name="s5_javascript" type="list" default="mootools" label="Choose your javascript library." description="We provide our own javascript S5 effects in case your template already uses a version of mootools that conflicts with this module."  >
+					<option value="mootools">Mootools Javascript</option>
+					<option value="s5effects">S5 Effects Javascript</option>
+				</param>
+				
+				
+				<param name="Mootools Animation" type="spacer" default="" />
+				<param name="s5_mootoolsmouse" type="list" default="mouse" label="Choose your button activation method" description="Select either mouse over or click to configure what method your modules appear with"  >
+					<option value="mouse">Mouse Over</option>
+					<option value="click">Click</option>
+				</param>
+			
+				
+				<param name="S5 Effects Animation" type="spacer" default="" />
+				
+				<param name="s5_effectsani" type="list" default="fade" label="Choose your animation effect" description="Select either fade in or snap in to configure what method your modules appear with"  >
+					<option value="fade">Fade In</option>
+					<option value="snap">Snap In</option>
+				</param>
+				
+				<param name="s5_effectmouse" type="list" default="mouse" label="Choose your button activation method" description="Select either mouse over or click to configure what method your modules appear with"  >
+					<option value="mouse">Mouse Over</option>
+					<option value="click">Click</option>
+				</param>
+			
+				
+				
+				
+                <param name="" type="spacer" default="You may add up to 10 module positions. Nothing will show unless the module is published to one of the s5_fs_x positions." label="Note:" description="" />
+                
+				<param name="Button 1 Section" type="spacer" default="" />
+				<param name="text1line" type="text" default="Position s5_fs_1" label="Button Text 1 for module position s5_fs_1" description="Enter the text of button 1." />
+				<param name="text1image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+	
+				<param name="Button 2 Section" type="spacer" default="" />
+                <param name="text2line" type="text" default="Position s5_fs_2" label="Button Text 2 for module position s5_fs_2" description="Enter the text of button 2." />
+				<param name="text2image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 3 Section" type="spacer" default="" />
+				<param name="text3line" type="text" default="Position s5_fs_3" label="Button Text 3 for module position s5_fs_3" description="Enter the text of button 3." />
+				<param name="text3image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 4 Section" type="spacer" default="" />
+				<param name="text4line" type="text" default="Position s5_fs_4" label="Button Text 4 for module position s5_fs_4" description="Enter the text of button 4." />
+				<param name="text4image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 5 Section" type="spacer" default="" />
+				<param name="text5line" type="text" default="Position s5_fs_5" label="Button Text 5 for module position s5_fs_5" description="Enter the text of button 5." />
+				<param name="text5image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 6 Section" type="spacer" default="" />
+				<param name="text6line" type="text" default="Position s5_fs_6" label="Button Text 6 for module position s5_fs_6" description="Enter the text of button 6." />
+				<param name="text6image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 7 Section" type="spacer" default="" />
+				<param name="text7line" type="text" default="Position s5_fs_7" label="Button Text 7 for module position s5_fs_7" description="Enter the text of button 7." />
+				<param name="text7image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 8 Section" type="spacer" default="" />
+				<param name="text8line" type="text" default="" label="Button Text 8 for module position s5_fs_8" description="Enter the text of button 8." />
+				<param name="text8image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 9 Section" type="spacer" default="" />
+				<param name="text9line" type="text" default="" label="Button Text 9 for module position s5_fs_9" description="Enter the text of button 9." />
+				<param name="text9image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+				<param name="Button 10 Section" type="spacer" default="" />
+				<param name="text10line" type="text" default="" label="Button Text 10 for module position s5_fs_10" description="Enter the text of button 10." />
+				<param name="text10image" type="text" default="" label="Image 1 for button 1 (module position s5_fs_1)" description="Enter the URL if you would like an image for button 1, leave blank for no image." />
+	
+	</params>
+</install>

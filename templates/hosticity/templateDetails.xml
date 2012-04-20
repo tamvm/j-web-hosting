@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install version="1.5" type="template">
+	<name>hosticity</name>
+	<creationDate>August 2008</creationDate>
+	<author>Shape5.com</author>
+	<copyright>Shape5</copyright>
+	<authorEmail>contact@shape5.com</authorEmail>
+	<authorUrl>http://www.shape5.com</authorUrl>
+	<version>1.0</version>
+	<description>Hosticity - Shape 5 August 2008 Club Template<![CDATA[
+	<br /><a target="_blank" href="http://www.shape5.com">Click here</a> to visit Shape5.com]]></description>
+	<files>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>footer.php</filename>
+		<filename>s5_suckerfish.php</filename>
+		<filename>s5_no_moo_menu.php</filename>
+		<filename>s5_tab_show_HI.php</filename>
+		<filename>js/IEsuckerfish.js</filename>
+		<filename>js/s5_effects_drop.js</filename>
+		<filename>js/s5_effects_fade.js</filename>
+		<filename>js/s5_box.js</filename>
+		<filename>js/lytebox.js</filename>
+		<filename>js/s5_fading_no_moo_menu.js</filename>
+		<filename>js/s5_no_moo_menu.js</filename>
+		<filename>js/tooltips.js</filename>
+		<filename>html/modules.php</filename>
+		<filename>params.ini</filename>
+	</files>
+	<css>
+		<filename>css/style1.css</filename>
+		<filename>css/style2.css</filename>
+		<filename>css/style3.css</filename>
+		<filename>css/style4.css</filename>
+		<filename>css/style5.css</filename>
+		<filename>css/style6.css</filename>
+		<filename>css/template_css.css</filename>
+		<filename>css/s5_suckerfish.css</filename>
+		<filename>css/lytebox.css</filename>
+		<filename>css/editor.css</filename>
+	</css>
+	<images>
+		<filename>favicon.ico</filename>
+        <filename>template_thumbnail.png</filename>
+		<filename>images/arrow.png</filename>
+		<filename>images/con_address.png</filename>
+		<filename>images/con_fax.png</filename>
+		<filename>images/con_info.png</filename>
+		<filename>images/con_tel.png</filename>
+		<filename>images/emailButton.png</filename>
+		<filename>images/indent1.png</filename>
+		<filename>images/indent2.png</filename>
+		<filename>images/indent3.png</filename>
+		<filename>images/pdf_button.png</filename>
+		<filename>images/printButton.png</filename>
+		<filename>images/play_grey.png</filename>
+		<filename>images/prev_grey.gif</filename>
+		<filename>images/loading.gif</filename>
+		<filename>images/next_grey.gif</filename>
+		<filename>images/close_grey.png</filename>
+		<filename>images/pause_grey.png</filename>
+		<filename>images/s5_blue_h3.png</filename>
+		<filename>images/s5_body_bg.png</filename>
+		<filename>images/s5_bot_shadow_l.png</filename>
+		<filename>images/s5_bot_shadow_m.png</filename>
+		<filename>images/s5_bot_shadow_r.png</filename>
+		<filename>images/s5_bottom_lines.png</filename>
+		<filename>images/s5_bottom_lines_bg.png</filename>
+		<filename>images/s5_box_bg.png</filename>
+		<filename>images/s5_box_bg_ie.png</filename>
+		<filename>images/s5_box_icon.png</filename>
+		<filename>images/s5_button_bg.png</filename>
+		<filename>images/s5_def_h3.png</filename>
+		<filename>images/s5_footer_borders.png</filename>
+		<filename>images/s5_green_h3.png</filename>
+		<filename>images/s5_grey_h3.png</filename>
+		<filename>images/s5_header_shadow_l.png</filename>
+		<filename>images/s5_header_shadow_r.png</filename>
+		<filename>images/s5_left_shadow_dark.png</filename>
+		<filename>images/s5_left_shadow_light.png</filename>
+		<filename>images/s5_logo.png</filename>
+		<filename>images/s5_menu_grad.png</filename>
+		<filename>images/s5_menu_li.png</filename>
+		<filename>images/s5_menu_li_hover.png</filename>
+		<filename>images/s5_menu_parent.gif</filename>
+		<filename>images/s5_red_h3.png</filename>
+		<filename>images/s5_right_shadow_dark.png</filename>
+		<filename>images/s5_right_shadow_light.png</filename>
+		<filename>images/s5_row_gradient.png</filename>
+		<filename>images/s5_row_shadow.png</filename>
+		<filename>images/s5_search.png</filename>
+		<filename>images/style1/s5_fa_act_l.png</filename>
+		<filename>images/style1/s5_fa_act_r.png</filename>
+		<filename>images/style1/s5_menu_line.png</filename>
+		<filename>images/style2/s5_fa_act_l.png</filename>
+		<filename>images/style2/s5_fa_act_r.png</filename>
+		<filename>images/style2/s5_menu_line.png</filename>
+		<filename>images/style3/s5_fa_act_l.png</filename>
+		<filename>images/style3/s5_fa_act_r.png</filename>
+		<filename>images/style3/s5_menu_line.png</filename>
+		<filename>images/style4/s5_fa_act_l.png</filename>
+		<filename>images/style4/s5_fa_act_r.png</filename>
+		<filename>images/style4/s5_menu_line.png</filename>
+		<filename>images/style5/s5_fa_act_l.png</filename>
+		<filename>images/style5/s5_fa_act_r.png</filename>
+		<filename>images/style5/s5_menu_line.png</filename>
+		<filename>images/style6/s5_fa_act_l.png</filename>
+		<filename>images/style6/s5_fa_act_r.png</filename>
+		<filename>images/style6/s5_menu_line.png</filename>
+		<filename>images/typography/s5_bullet_small.png</filename>
+		<filename>images/typography/s5_check.png</filename>
+		<filename>images/typography/s5_left_quote.png</filename>
+		<filename>images/typography/s5_li_number1.jpg</filename>
+		<filename>images/typography/s5_li_number2.jpg</filename>
+		<filename>images/typography/s5_li_number3.jpg</filename>
+		<filename>images/typography/s5_li_number4.jpg</filename>
+		<filename>images/typography/s5_li_number5.jpg</filename>
+		<filename>images/typography/s5_li_number6.jpg</filename>
+		<filename>images/typography/s5_li_number7.jpg</filename>
+		<filename>images/typography/s5_li_number8.jpg</filename>
+		<filename>images/typography/s5_li_number9.jpg</filename>
+		<filename>images/typography/s5_right_quote.png</filename>
+		<filename>images/typography/s5_ul_arrow.png</filename>
+		<filename>images/typography/s5_ul_bullet.jpg</filename>
+		<filename>images/typography/s5_ul_star.png</filename>
+	</images>
+	<positions>
+		<position>breadcrumb</position>
+		<position>toolbar</position>
+		<position>top</position>
+		<position>cpanel</position>
+		<position>advert1</position>
+		<position>advert2</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>user6</position>
+		<position>user7</position>
+		<position>user8</position>
+		<position>left</position>
+		<position>right</position>
+		<position>debug</position>
+		<position>bottom</position>
+		<position>footer</position>
+		<position>newsflash</position>
+		<position>legals</position>
+		<position>s5_tab1</position>
+		<position>s5_tab2</position>
+		<position>s5_tab3</position>
+		<position>s5_tab4</position>
+		<position>s5_tab5</position>
+		<position>s5_tab6</position>
+		<position>s5_tab7</position>
+		<position>s5_tab8</position>
+		<position>s5_tab9</position>
+		<position>s5_tab10</position>
+		<position>s5_tab11</position>
+		<position>s5_tab12</position>
+		<position>s5_tab13</position>
+		<position>s5_tab14</position>
+		<position>s5_tab15</position>
+		<position>s5_tab16</position>
+		<position>s5_tab17</position>
+		<position>s5_tab18</position>
+		<position>s5_tab19</position>
+		<position>s5_tab20</position>		
+	</positions>
+	<params>
+		<param name="spacer1" type="spacer" default="Make sure to hover your mouse over each title in this column for a full description of what each field does." />
+		<param name="xml_menuname" type="text" default="mainmenu" label="Menu Name" description="What menu would you like to use for the default default menu?" />
+        <param name="xml_s5_style" type="list" default="style1" label="Color Style" description="Enter the style number you wish to use.">
+			<option value="style1">style1</option>
+			<option value="style2">style2</option>
+			<option value="style3">style3</option>
+			<option value="style4">style4</option>
+			<option value="style5">style5</option>
+			<option value="style6">style6</option>
+		</param>
+		<param name="xml_s5_shade" type="list" default="light" label="Light or Dark" description="Would you like the background to be light or dark?">
+			<option value="light">light</option>
+			<option value="dark">dark</option>
+		</param>
+		<param name="xml_s5_s5box_effect" type="list" default="drop" label="S5 Box Drop or Fade" description="If you choose to use the S5 Box by publishing any module to the toolbar position would you like the box to drop in or fade in?">
+			<option value="drop">drop</option>
+			<option value="fade">fade</option>
+		</param>
+		<param name="xml_s5_phone_number" type="text" default="1-800-800-0000" label="Phone Number" description="If you wish to have your phone number appear on the header enter it below. If you do not wish to have it appear enter the word none." />
+		<param name="xml_s5_body_width" type="text" default="950" label="Body Width" description="What width would you like for the website?" />
+		<param name="xml_s5_right_width" type="text" default="190" label="Right Width" description="Enter the width of the main right column in pixels." />
+		<param name="xml_s5_left_width" type="text" default="220" label="Left Width" description="Enter the width of the left position in pixels." />
+		<param name="xml_s5_menu" type="list" default="1" label="Menu Type" description="This template comes with 2 built in drop down menu options, the S5 No-MooMenu and the standard suckerfish menu.">
+			<option value="1">S5 No-MooMenu</option>
+			<option value="2">Suckerfish</option>
+		</param>
+		<param name="xml_s5_no_moo_type" type="list" default="fade" label="S5 No-MooMenu Fade or Drop?" description="If you chose to use the S5 No-MooMenu you may now choose to have the menu drop in from the corner or fade in. Please note that if you have a lot of animation on your page the drop in menu can run slowly because of issues with javascript.">
+			<option value="fade">fade</option>
+			<option value="drop">drop</option>
+		</param>
+		<param name="xml_s5_tooltips" type="list" default="yes" label="Would you like to enable tooltips?">
+			<option value="yes">yes</option>
+			<option value="no">no</option>
+		</param>
+		<param name="spacer4" type="spacer" default="Enter the title of each tab below that you are using. Remember to also publish a module to the corresponding tab number or the tab will not show. Use the module manager to change which tabs show on which pages. Please visit our demo page for a complete tutorial at demo.shape5.com" />
+		<param name="xml_s5_tab_show_pos" type="list" default="1" label="S5 Tab Show Position" description="">
+			<option value="1">Above Main Body</option>
+			<option value="2">Below Main Body</option>
+		</param>
+		<param name="xml_tab1title" type="text" default="Tab 1 Title" label="Tab 1 Title" />
+		<param name="xml_tab2title" type="text" default="Tab 2 Title" label="Tab 2 Title" />
+		<param name="xml_tab3title" type="text" default="Tab 3 Title" label="Tab 3 Title" />
+		<param name="xml_tab4title" type="text" default="Tab 4 Title" label="Tab 4 Title" />
+		<param name="xml_tab5title" type="text" default="Tab 5 Title" label="Tab 5 Title" />
+		<param name="xml_tab6title" type="text" default="Tab 6 Title" label="Tab 6 Title" />
+		<param name="xml_tab7title" type="text" default="Tab 7 Title" label="Tab 7 Title" />
+		<param name="xml_tab8title" type="text" default="Tab 8 Title" label="Tab 8 Title" />
+		<param name="xml_tab9title" type="text" default="Tab 9 Title" label="Tab 9 Title" />
+		<param name="xml_tab10title" type="text" default="Tab 10 Title" label="Tab 10 Title" />
+		<param name="xml_tab11title" type="text" default="Tab 11 Title" label="Tab 11 Title" />
+		<param name="xml_tab12title" type="text" default="Tab 12 Title" label="Tab 12 Title" />
+		<param name="xml_tab13title" type="text" default="Tab 13 Title" label="Tab 13 Title" />
+		<param name="xml_tab14title" type="text" default="Tab 14 Title" label="Tab 14 Title" />
+		<param name="xml_tab15title" type="text" default="Tab 15 Title" label="Tab 15 Title" />
+		<param name="xml_tab16title" type="text" default="Tab 16 Title" label="Tab 16 Title" />
+		<param name="xml_tab17title" type="text" default="Tab 17 Title" label="Tab 17 Title" />
+		<param name="xml_tab18title" type="text" default="Tab 18 Title" label="Tab 18 Title" />
+		<param name="xml_tab19title" type="text" default="Tab 19 Title" label="Tab 19 Title" />
+		<param name="xml_tab20title" type="text" default="Tab 20 Title" label="Tab 20 Title" />
+	</params>
+</install>
