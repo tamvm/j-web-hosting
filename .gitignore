@@ -2,3 +2,5 @@ cache
 tmp
 configuration.php
 backup
+.sass-cache
+templates/hosticity/css/application.css
