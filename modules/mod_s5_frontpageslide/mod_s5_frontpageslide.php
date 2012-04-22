@@ -165,7 +165,7 @@ window.addEvent("domready", function() {
 		idToggle: "",
 		item: {
 			klass: "s5_button_item",
-			size: <?php echo $s5_contentwidth ?>},
+			size: "<?php echo $s5_contentwidth; ?>"},
 		animation: {
 			type: "scroll",
 			duration: 1000,

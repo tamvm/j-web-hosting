@@ -17,12 +17,12 @@ class AcesefURI {
 		// Get config object
 		$this->AcesefConfig = AcesefFactory::getConfig();
 	}
-	
+
 	// non-SEF Vars
 	function nonSefVars(&$uri, $non_sef_vars = null, $non_sef_part = "") {
 		$ext_non_sef = array();
 		$config_non_sef	= array();
-		
+
 		// Load the nonSEF vars from extension parameters
 		if (!is_null($uri->getVar('option'))) {
 			$non_sef = $this->attributes->params->get('non_sef_vars', '');
@@ -32,12 +32,12 @@ class AcesefURI {
 				$ext_non_sef = explode(',', $non_sef);
 			}
 		}
-		
+
 		// Get globally configured nonSEF vars
 		if (!empty($this->AcesefConfig->non_sef_vars)) {
 			$config_non_sef = explode(',', $this->AcesefConfig->non_sef_vars);
 		}
-		
+
 		// Combine all non-SEF vars arrays
 		$n_sef_vars = array_merge($ext_non_sef, $config_non_sef);
 		if (!empty($n_sef_vars)) {
@@ -55,10 +55,10 @@ class AcesefURI {
 				}
 			}
 		}
-		
+
 		// Option, Itemid, lang filter
 		$filter = array('option', 'Itemid', 'lang');
-		
+
 		// non_sef_vars - variables to exclude only if set to in configuration
 		if ($this->AcesefConfig->append_non_sef && isset($non_sef_vars)) {
 			foreach ($non_sef_vars as $name => $value) {
@@ -66,12 +66,12 @@ class AcesefURI {
 				if (is_null($uri->getVar($name))) {
 					continue;
 				}
-				
+
 				// Do not process filter
 				if (in_array($name, $filter)) {
 					continue;
 				}
-				
+
 				if (is_array($value)) {
                     // Variable is an array, let's remove all its occurences
                     foreach ($value as $key => $val) {
@@ -92,7 +92,7 @@ class AcesefURI {
 				}
 				$uri->delVar($name);
 			}
-			
+
 			$mainframe =& JFactory::getApplication();
 			$global_non_sef = $mainframe->get('acesef.global.nonsefvars');
 			if (!empty($global_non_sef)) {
@@ -103,18 +103,18 @@ class AcesefURI {
 				}
 				$mainframe->set('acesef.global.nonsefvars', $global_non_sef);
 			}
-		}			
-	
+		}
+
 		return $non_sef_part;
 	}
-	
+
 	// disable-SEF Vars
 	function disableSefVars($uri) {
 		$do_sef			= true;
 		$ext_dis_sef	= array();
 		$config_dis_sef	= array();
 		$dis_sef_vars	= array();
-		
+
 		// Load the disable-SEF vars from extension parameters
 		if (!is_null($uri->getVar('option'))) {
 			$dis_sef = $this->attributes->params->get('disable_sef_vars', '');
@@ -124,12 +124,12 @@ class AcesefURI {
 				$ext_dis_sef = explode(',', $dis_sef);
 			}
 		}
-		
+
 		// Get globally configured disable-SEF vars
 		if (!empty($this->AcesefConfig->disable_sef_vars)) {
 			$config_dis_sef = explode(',', $this->AcesefConfig->disable_sef_vars);
 		}
-		
+
 		// Combine both disable-SEF vars arrays
 		$vars = array_merge($ext_dis_sef, $config_dis_sef);
 		if (!empty($vars)) {
@@ -150,16 +150,16 @@ class AcesefURI {
 				}
 			}
 		}
-		
+
 		return $do_sef;
 	}
-	
+
 	// Skip menu vars
 	function skipMenuVars($uri) {
 		$skip_menu = false;
 		$ext_skip_menu = array();
 		$config_skip_menu = array();
-		
+
 		// Load the skip menu vars from extension parameters
 		if (!is_null($uri->getVar('option'))) {
 			$e_skip_menu = $this->attributes->params->get('skip_menu_vars', '');
@@ -169,12 +169,12 @@ class AcesefURI {
 				$ext_skip_menu = explode(',', $e_skip_menu);
 			}
 		}
-		
+
 		// Get globally configured skip menu vars
 		if (!empty($this->AcesefConfig->skip_menu_vars)) {
 			$config_skip_menu = explode(',', $this->AcesefConfig->skip_menu_vars);
 		}
-		
+
 		// Combine all skip menu vars arrays
 		$vars = array_merge($ext_skip_menu, $config_skip_menu);
 		if (!empty($vars)) {
@@ -195,10 +195,10 @@ class AcesefURI {
 				}
 			}
 		}
-	
+
 		return $skip_menu;
 	}
-	
+
 	// Get page number
 	function getPageNumber($vars, $ext_params, $item_limitstart = false) {
 		$mainframe =& JFactory::getApplication();
@@ -211,14 +211,14 @@ class AcesefURI {
 		if (!empty($vars['limit'])) {
 			$limit = $vars['limit'];
 		}
-		
+
 		$number = "";
-		
+
 		if ($item_limitstart == true) {
 			$limitstart++;
 			return $limitstart;
 		}
-		
+
 		// com_content
 		if ($option == 'com_content') {
 			if (!empty($vars['view'])) {
@@ -227,9 +227,9 @@ class AcesefURI {
 			if (!empty($vars['layout'])) {
 				$layout	= $vars['layout'];
 			}
-			
+
 			$menu_params = AcesefUtility::getMenu()->getParams(intval($Itemid));
-			
+
 			if (!empty($menu_params)) {
 				if ((!empty($layout) && $layout == 'blog') || (!empty($view) && $view == 'frontpage')) {
 					$nm_leading = $menu_params->get('num_leading_articles', 1);
@@ -238,100 +238,100 @@ class AcesefURI {
 					if (!empty($total_articles)) {
 						$number = $limitstart / $total_articles;
 						$number++;
-						
+
 						return $number;
 					}
 				}
-				
+
 				if (!empty($view) && $view == 'category' && empty($layout)) {
 					$links_num = $menu_params->get('display_num');
 					if (!empty($links_num)) {
 						$number = $limitstart / $links_num;
 						$number++;
-						
+
 						return $number;
 					}
-					
+
 					$state_limit = $mainframe->getUserStateFromRequest('limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
 					if (!empty($state_limit)) {
 						$number = $limitstart / $state_limit;
 						$number++;
-						
+
 						if ($this->AcesefConfig->url_append_limit == 1) {
 							$number .= ' '.$state_limit;
 						}
-						
+
 						return $number;
 					}
 				}
 			}
 		}
-		
+
 		// com_acesef
 		if ($option == 'com_acesef') {
 			if (!empty($vars['view'])) {
 				$view = $vars['view'];
 			}
-			
+
 			if (!empty($view)) {
 				if ($view == 'tags') {
 					$number = $limitstart / $this->AcesefConfig->tags_limit;
 					$number++;
-					
+
 					return $number;
 				}
-			
+
 				$menu_params = AcesefUtility::getMenu()->getParams(intval($Itemid));
-				
+
 				if ($view == 'sitemap' && !empty($menu_params)) {
 					$number = $limitstart / $menu_params->get('display_num', 50);
 					$number++;
-					
+
 					return $number;
 				}
 			}
 		}
-		
+
 		// Empty limit value
 		if (empty($limit)) {
 			$limit_num = $ext_params->get('limit_num', '');
 			if (!empty($limit_num)) {
-				$number = $limitstart / $limit_num; 
+				$number = $limitstart / $limit_num;
 				$number++;
-				
+
 				return $number;
 			}
-			
+
 			$state_limit = $mainframe->getUserStateFromRequest('limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
 			if (!empty($state_limit)) {
 				$number = $limitstart / $state_limit;
 				$number++;
-				
+
 				if ($this->AcesefConfig->url_append_limit == 1) {
 					$number .= ' '.$state_limit;
 				}
-				
+
 				return $number;
 			}
-			
+
 			$number = $limitstart;
-			
+
 			return $number;
 		}
-		
+
 		$number = $limitstart / $limit;
 		$number++;
-		
+
 		if ($option == 'com_virtuemart' && $ext_params->get('vm_drop_down_list', '1') == 2) {
 			$number .= ' '.$limit;
 		}
-		
+
 		return $number;
 	}
-	
+
 	function _isHomePage($uri) {
 		static $home_query, $home_id;
-		
+
 		$n_uri = clone($uri);
 
         if (!is_null($n_uri->getVar('option'))) {
@@ -350,7 +350,7 @@ class AcesefURI {
         }
 
 		$query = $n_uri->_vars;
-		
+
 		if (!isset($query['option'])) {
 			return false;
 		}
@@ -359,7 +359,7 @@ class AcesefURI {
             if($query['Itemid'] != $home_id) {
                 return false;
             }
-			
+
             unset($query['Itemid']);
         }
 		elseif (($query['option'] == 'com_content') && isset($query['view'])  && ($query['view'] == 'frontpage')) {
@@ -380,54 +380,54 @@ class AcesefURI {
         if (count($cmp) > 0) {
             return false;
         }
-		
+
         return true;
     }
-	
+
 	function getDomain() {
 		static $domain;
-		
+
 		if (!isset($domain)) {
 			// Get domain
 			$domain = JURI::root();
-			
+
 			// Adjust domain according to www redirection
 			if (($this->AcesefConfig->redirect_to_www == 1) && (strpos($domain, '://www.') === false)) {
 				$domain = str_replace('://', '://www.', $domain);
 			} elseif ($this->AcesefConfig->redirect_to_www == 2) {
 				$domain = str_replace('://www.', '://', $domain);
 			}
-			
+
 			// Add slash after domain
 			if(substr($domain, -1) != '/') {
 				$domain .= '/';
 			}
 		}
-		
+
 		return $domain;
 	}
-	
+
 	// thanks to Nicholas K. Dionysopoulos, akeebabackup.com
 	function findItemid($vars = array(), $params = null) {
 		if (empty($vars) || !is_array($vars)) {
 			$vars = array();
 		}
-		
+
 		$menus =& AcesefUtility::getMenu();
-		$menuitem =& $menus->getActive(); 
-		
-		// First check the current menu item (fastest shortcut!) 
+		$menuitem =& $menus->getActive();
+
+		// First check the current menu item (fastest shortcut!)
 		if (is_object($menuitem)) {
 			if (self::_checkMenu($menuitem, $vars, $params)) {
 				return $menuitem;
 			}
 		}
-		
+
 		$items = $menus->getMenu();
 		if (empty($items)) {
 			return null;
 		}
-		
+
 		foreach ($items as $item) {
 			if (is_object($item) && isset($item->published) && $item->published == '1') {
 				if (self::_checkMenu($item, $vars, $params)) {
@@ -436,35 +436,35 @@ class AcesefURI {
 			}
 		}
 
-		return null; 
-	} 
+		return null;
+	}
 
 	function _checkMenu($menu, $vars, $params = null) {
 		$query = $menu->query;
-		
+
 		foreach ($vars as $key => $value) {
 			if (is_null($value)) {
 				continue;
 			}
-			
+
 			if (!isset($query[$key])) {
 				return false;
 			}
-			
+
 			if ($query[$key] != $value) {
 				return false;
 			}
-		} 
+		}
 
 		if (!is_null($params)) {
-			$menus =& AcesefUtility::getMenu(); 
+			$menus =& AcesefUtility::getMenu();
 			$check = $menu->params instanceof JParameter ? $menu->params : $menus->getParams($menu->id);
-			
+
 			foreach ($params as $key => $value) {
 				if (is_null($value)) {
 					continue;
 				}
-				
+
 				if ($check->get($key) != $value) {
 					return false;
 				}
@@ -473,7 +473,7 @@ class AcesefURI {
 
 		return true;
 	}
-	
+
 	function _checkDB(&$uri, $prev_lang) {
 		$real_url = AcesefURI::sortURItoString($uri);
 
@@ -491,49 +491,49 @@ class AcesefURI {
 			} else {
 				$route = $url_found->url_sef;
 			}
-			
+
 			$uri = self::_finalizeURI($uri, $route);
-			
+
 			self::restoreLang($prev_lang);
-			
+
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	function _finalizeURI($uri, $route) {
 		// Prepare non-SEF part
 		if (($this->attributes->non_sef_part != '') && (strstr($route, '?'))) {
 			$this->attributes->non_sef_part = str_replace('?', '&amp;', $this->attributes->non_sef_part);
 		}
-		
+
 		// Get domain
 		$url = self::getDomain();
-		
+
 		// Add non-SEF vars
 		if ($this->AcesefConfig->append_non_sef == 1) {
 			$url .= $route.$this->attributes->non_sef_part;
 		} else {
 			$url .= $route;
 		}
-		
+
 		// Add fragment
 		$fragment = $uri->getFragment();
 		if (!empty($fragment)) {
 			$url .= '#'.$fragment;
 		}
-		
+
 		// Finally return new URI
 		return new JURI($url);
 	}
-	
+
 	function _finalizeSEF($uri, $sef_url, $real_url, $component, $lang_code) {
 		// Add menu title
 		$skip_menu = $this->attributes->params->get('skip_menu', '0');
-		if (!AcesefExtension::skipMenu('', true) && 
-			!self::skipMenuVars($uri) && 
-			!self::_isHomePage($uri) && 
+		if (!AcesefExtension::skipMenu('', true) &&
+			!self::skipMenuVars($uri) &&
+			!self::_isHomePage($uri) &&
 			($skip_menu == 0 || ($skip_menu == 1 && $sef_url == ''))
 		) {
 			$menu_title = array();
@@ -548,7 +548,7 @@ class AcesefURI {
 
 			if (!empty($menu_title)) {
 				$menu_url = implode('/', $menu_title);
-				
+
 				$sef_url = ltrim($sef_url, '/');
 				if (empty($sef_url)) {
 					$sef_url = $menu_url;
@@ -557,13 +557,13 @@ class AcesefURI {
 				}
 			}
 		}
-		
+
 		// Add lang code
 		if ($lang_code != ""){
 			$sef_url = ltrim($sef_url, '/');
 			$sef_url = $lang_code.'/'.$sef_url;
 		}
-		
+
 		// Append menu ItemID
 		if ($this->AcesefConfig->append_itemid == 1 && !is_null($uri->getVar('Itemid'))) {
 			$sef_url = rtrim($sef_url, '/');
@@ -577,10 +577,10 @@ class AcesefURI {
 			$sef_url	= rtrim($sef_url, '/');
 			$sef_url	.= '/'.$page_str;
 		}
-		
+
 		// Make some cleanup
 		$sef_url = self::_cleanupSefUrl($sef_url);
-		
+
 		// Check if the suffix is set and make some optimization
 		if (strpos($sef_url, '.') === false && $sef_url != '/' && substr($sef_url, strlen($sef_url)-1, 1) != '/') {
 			if ($sef_url != '') {
@@ -590,25 +590,25 @@ class AcesefURI {
 			$sef_url = str_replace('-.', '.', $sef_url);
 			$sef_url = str_replace('/pdf'.$this->AcesefConfig->url_suffix, '.pdf', $sef_url);
 		}
-		
+
 		// Lowercase URLs
 		if ($this->AcesefConfig->url_lowercase == 1) {
 			$sef_url = JString::strtolower($sef_url);
 		}
-		
+
 		// Remove front slash
 		$sef_url = ltrim($sef_url, '/');
-		
+
 		// Remove the trailing slash
 		if (!empty($sef_url) && $this->AcesefConfig->remove_trailing_slash == 1) {
 			$sef_url = rtrim($sef_url, '/');
 		}
-		
+
 		// Manage Duplicate URLs
 		if (AcesefUtility::getConfigState($this->attributes->params, 'numeral_duplicated')) {
 			$sef_url = self::_numeralDuplicated($sef_url, $real_url);
 		}
-		
+
 		// Save the generated SEF URL
 		if ($real_url != "" && ($sef_url != "" || ($sef_url == "" && self::_isHomePage($uri)))) {
 			// URL
@@ -620,32 +620,32 @@ class AcesefURI {
 					self::_saveRecord($real_url, $sef_url, $component);
 				}
 			}
-		
+
 			// Metadata
 			$metadata = $this->attributes->meta;
 			if ($this->AcesefConfig->meta_core == 1 && is_array($metadata) && count($metadata) > 0) {
 				AcesefMetadata::autoMetadata($sef_url, $metadata);
 			}
-		
+
 			// Sitemap
 			if ($this->AcesefConfig->sm_auto_mode == 1 && class_exists('AcesefSitemap')) {
 				AcesefSitemap::autoSitemap($component, $this->attributes->params, $sef_url, $real_url);
 			}
-		
+
 			// Tags
 			if ($this->AcesefConfig->tags_auto_mode == 1 && is_array($metadata) && !empty($metadata['keywords']) && class_exists('AcesefTags')) {
 				AcesefTags::autoTags($metadata['keywords'], $component, $this->attributes->params, $sef_url, $real_url);
 			}
 		}
-		
+
 		return $sef_url;
 	}
-	
+
 	// Cleanup SEF URL
 	function _cleanupSefUrl($sef_url) {
 		// Remove the white spaces
 		$sef_url = preg_replace('/\s\s+/', ' ', $sef_url);
-		
+
 		// Remove some unwanted chars
 		$replace = array("&quot;", "\"", "\\", "'", "`", "´", "‘", "’", "“", "”", "<", ">", "«", "»", "¿", "•", "®", "™", "„", "\\");
    		foreach ($replace as $value) {
@@ -653,44 +653,44 @@ class AcesefURI {
 				$sef_url = str_replace($value, "", $sef_url);
 			}
    		}
-		
+
 		// Strip characters
 		if ($this->AcesefConfig->url_strip_chars != "") {
 			$len = JString::strlen($this->AcesefConfig->url_strip_chars);
-		    
+
 			for ($i = 0; $i < $len; $i++) {
 		    	$char = substr($this->AcesefConfig->url_strip_chars, $i, 1);
 		    	$sef_url = str_replace($char, "", $sef_url);
 		    }
 		}
-		
+
 		// Replace chars for non-latin languages
 		if ($this->AcesefConfig->char_replacements != '' && $this->AcesefConfig->utf8_url == 0) {
 			$chars = $this->AcesefConfig->char_replacements;
-			
+
 			$elements = explode(',', $chars);
 			foreach ($elements as $element) {
 				@list($source, $destination) = explode('|', JString::trim($element));
-				
+
 				$source = JString::trim($source);
 				$destination = JString::trim($destination);
-				
+
 				// Empty source, continue
                 if ($source == '') {
 					continue;
 				}
-				
+
 				$sef_url = str_replace($source, $destination, $sef_url);
 			}
 		}
-   		
+
 		// Remove quotes, spaces, and other illegal characters
         if ($this->AcesefConfig->utf8_url == 1) {
             $title = preg_replace(array('/\'/', '/[\s"\?\:\/\\\\]/', '/(^_|_$)/'), array('', $this->AcesefConfig->replacement_character, ''), $sef_url);
         } else {
             $title = preg_replace(array('/\'/', '/[^a-zA-Z0-9\-!.,+]+/', '/(^_|_$)/'), array('', $this->AcesefConfig->replacement_character, ''), $sef_url);
         }
-		
+
 		// Space and some replacements
 		$sef_url = str_replace(' ', $this->AcesefConfig->replacement_character, $sef_url);
 		$sef_url = AcesefUtility::replaceLoop($this->AcesefConfig->replacement_character.'/', '/', $sef_url);
@@ -698,17 +698,17 @@ class AcesefURI {
 		$sef_url = AcesefUtility::replaceLoop('//', '/', $sef_url);
 		$sef_url = AcesefUtility::replaceLoop('--', '-', $sef_url);
 		$sef_url = rtrim($sef_url, '-');
-		
+
 		return $sef_url;
 	}
-	
+
 	// Manage Duplicated URLs
-	function _numeralDuplicated($sef_url, $real_url) {		
+	function _numeralDuplicated($sef_url, $real_url) {
 		$cansave = 0;
-		
+
 		while ($cansave == 0) {
 			$row = AcesefCache::checkURL($sef_url, true);
-			
+
 			if (is_object($row) && !empty($row->url_sef) && $real_url != $row->url_real) {
 				if (strpos($row->url_sef, "-dp") > 0) {
 					$link = explode("-dp", $row->url_sef);
@@ -718,7 +718,7 @@ class AcesefURI {
 						$number = $link[1];
 					}
 					$number ++;
-					
+
 					// Make new sef
 					$sef_url = $link[0].'-dp'.$number;
 					if (!empty($this->AcesefConfig->url_suffix)){
@@ -735,7 +735,7 @@ class AcesefURI {
 
 				// Check if the new sef url exists
 				$check = AceDatabase::loadResult("SELECT url_sef FROM #__acesef_urls WHERE url_sef = ".AceDatabase::quote($sef_url)."");
-				
+
 				if (!empty($check)) {
 					$cansave = 0;
 				} else {
@@ -745,24 +745,24 @@ class AcesefURI {
 				$cansave = 1;
 			}
 		}
-	
+
 		return $sef_url;
 	}
-	
+
 	// Save the new record
-	function _saveRecord($real_url, $sef_url, $component) {	
+	function _saveRecord($real_url, $sef_url, $component) {
 		// Check if we should track the URL source
 		if ($this->AcesefConfig->source_tracker == 1) {
 			$source = AcesefUtility::replaceSpecialChars(self::_urlSource());
 		} else {
 			$source = "";
 		}
-		
+
 		// Cat statuses
 		$tags = self::_paramValue('tags', $component);
 		$ilinks = self::_paramValue('ilinks', $component);
 		$bookmarks = self::_paramValue('bookmarks', $component);
-		
+
 		// Params
 		$params = "custom=0";
 		$params .= "\npublished=1";
@@ -775,27 +775,27 @@ class AcesefURI {
 		$params .= "\nbookmarks={$bookmarks}";
 		$params .= "\nvisited=0";
 		$params .= "\nnotes=";
-		
+
 		// Finally, save record in DB
 		$values = "(".AceDatabase::quote($sef_url).", ".AceDatabase::quote($real_url).", '0', '".date('Y-m-d H:i:s')."', '{$source}', '{$params}')";
 		AceDatabase::query("INSERT IGNORE INTO #__acesef_urls (url_sef, url_real, used, cdate, source, params) VALUES {$values}");
 	}
-	
+
 	// Get the source of the URL
 	function _urlSource() {
         $trace = debug_backtrace();
-        $source = ""; 
+        $source = "";
 		$tr = 0;
-		
+
         foreach ($trace as $row) {
         	if (@$row['class'] == 'JRouterAcesef' && @$row['function'] == 'build') {
-        		// This starts tracing for next 3 rounds        		
+        		// This starts tracing for next 3 rounds
        			$tr = 1;
-       			continue; 
+       			continue;
         	} elseif ($tr == 0) {
 				continue;
 			}
-        	
+
         	$file = isset($row['file']) ? str_replace(JPATH_BASE, '', $row['file']) : 'n/a';
         	$args = array();
         	if (!empty($row['args'])) {
@@ -810,71 +810,71 @@ class AcesefURI {
 				}
 			}
         	$source .= @$row['class'] . @$row['type'] . @$row['function'] . "(" . implode(', ', $args) .  ")--b2--" . $file . '--b2--' . @$row['line'] . "\n--b1--\n";
-        	
+
         	if ($tr == 3) {
 				break;
 			}
-			
+
         	$tr++;
         }
-        
+
         return $source;
 	}
-	
+
 	function _paramValue($section, $component) {
 		$_components = $section."_components";
 		$_cats = $section."_cats";
 		$_enable_cats = $section."_enable_cats";
 		$_in_cats = $section."_in_cats";
 		$cat = AcesefUtility::get('category.param');
-		
+
 		if (!in_array($component, $this->AcesefConfig->$_components)) {
 			return 0;
 		}
-		
+
 		if (AcesefUtility::getConfigState($this->attributes->params, $_enable_cats) && ($cat[$_cats.'_status'] == 0 && $cat['_flag'] == 1)) {
 			return 0;
 		}
-		
+
 		if (!AcesefUtility::getConfigState($this->attributes->params, $_in_cats) && $cat['_is_cat'] == 1) {
 			return 0;
 		}
-		
+
 		return 1;
 	}
-	
+
 	function updateURLs($rows, $where) {
 		// Nothing to update
 		if(is_null($rows) || count($rows) == 0) {
 			return 0;
 		}
-		
+
 		// Load the needed classes
 		jimport('joomla.application.router');
 		require_once(JPATH_ROOT.DS.'includes'.DS.'application.php');
 		require_once(JPATH_ACESEF_ADMIN.DS.'library'.DS.'router.php');
-		
+
 		if (AcesefUtility::JoomFishInstalled()) {
 			require_once( JPATH_ROOT .DS. 'components' .DS. 'com_joomfish' .DS. 'helpers' .DS. 'defines.php' );
 			JLoader::register('JoomfishManager', JOOMFISH_ADMINPATH .DS. 'classes' .DS. 'JoomfishManager.class.php' );
 			JLoader::register('JoomFishVersion', JOOMFISH_ADMINPATH .DS. 'version.php' );
 			JLoader::register('JoomFish', JOOMFISH_PATH .DS. 'helpers' .DS. 'joomfish.class.php' );
-		} 
-		
+		}
+
 		// First, delete all the URLs
 		if (!AceDatabase::query("DELETE FROM #__acesef_urls{$where}")) {
 			return 0;
 		}
-		
+
 		// Create AceSEF router
 		$router = new JRouterAcesef();
-		
+
 		// JoomFish patch
 		if (AcesefUtility::JoomFishInstalled()) {
 			$mainframe =& JFactory::getApplication();
 			// Set mainframe as frontend
 			$mainframe->_clientId = 0;
-			
+
 			// Initialize JoomFish plugin
 			if(!class_exists('plgSystemJFDatabase')) {
 				require(JPATH_PLUGINS.DS.'system'.DS.'jfdatabase.php');
@@ -883,68 +883,68 @@ class AcesefURI {
 			$dispatcher = & JDispatcher::getInstance();
 			$plugin = new plgSystemJFDatabase($dispatcher, (array)($params));
 			$plugin->onAfterInitialise();
-			
+
 			// Get the mainframe back to backend
 			$mainframe->_clientId = 1;
 		}
-		
+
 		// Update URLs one by one
 		for($i = 0, $n = count($rows); $i < $n; $i++) {
 			$row =& $rows[$i];
 			$old_real_url = $row->url_real;
 			$old_sef_url = $row->url_sef;
-		
+
 			$new_sef_uri = $router->build($old_real_url);
 			$new_sef_url = ltrim(str_replace(JURI::root(), '', $new_sef_uri->_uri), '/');
-			
+
 			// SEF URL changed, add it to Moved URLs
 			if($old_sef_url != $new_sef_url) {
 				// Already exists?
 				$id = AceDatabase::loadResult("SELECT id FROM #__acesef_urls_moved WHERE url_old = ".AceDatabase::quote($old_sef_url)." AND url_new = ".AceDatabase::quote($new_sef_url)." LIMIT 1");
-				
+
 				if(!$id) {
 					AceDatabase::query("INSERT IGNORE INTO #__acesef_urls_moved (url_old, url_new) VALUES (".AceDatabase::quote($old_sef_url).", ".AceDatabase::quote($new_sef_url).")");
 				}
 			}
 		}
-		
+
 		return count($rows);
 	}
-	
+
 	// b
 	function bas(&$plugin) {
-		$b = 'ba';
-		$r = 're';
-        $g = 'getDo'.'cument';
-		$cBB = 'PGRpdiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7IGZvbnQtc2l6ZTogOXB4OyB2aXNpYmlsaXR5';
-        $d =& JFactory::$g();
-        $cBB .= 'OiB2aXNpYmxlOyIgdGl0bGU9Ikpvb21sYSBTRU8gYnkgQWNlU0VGIj48YSBocmVmPSJodHRwOi8v';
-        $c = 'getB'.'uffer';
-		$b .= 'se';
-        $cB =& $d->$c('c'.'om'.'po'.'ne'.'nt');
-		$b .= '6';
-        $cBB .= 'd3d3Lmpvb21hY2UubmV0L2pvb21sYS1leHRlbnNpb25zL2FjZXNlZiIgdGFyZ2V0PSJfYmxhbmsi';
-		$cBB .= 'Pkpvb21sYSBTRU8gYnkgQWNlU0VGPC9h';
-		$r .= 'da';
-		$b .= '4';
-		$b .= '_d';
-        $c = 'se'.'tB'.'uf'.'fer';
-		$b .= 'eco';
-		$r .= 'ct';
-		$r_p = JPATH_PLUGINS.DS.'sy'.'stem'.DS.$r.'.php';
-		$cBBB = $cBB.'PjwvZGl2Pg==';
-        if(JRequest::getCmd('format') != 'raw' && JRequest::getCmd('tmpl') != 'raw'){
-		$b .= 'de';
-		$d->$c($cB.$b($cBBB), 'co'.'mp'.'onent');}
-        return $cBBB;
+		// $b = 'ba';
+		// $r = 're';
+        // $g = 'getDo'.'cument';
+		// $cBB = 'PGRpdiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7IGZvbnQtc2l6ZTogOXB4OyB2aXNpYmlsaXR5';
+        // $d =& JFactory::$g();
+        // $cBB .= 'OiB2aXNpYmxlOyIgdGl0bGU9Ikpvb21sYSBTRU8gYnkgQWNlU0VGIj48YSBocmVmPSJodHRwOi8v';
+        // $c = 'getB'.'uffer';
+		// $b .= 'se';
+        // $cB =& $d->$c('c'.'om'.'po'.'ne'.'nt');
+		// $b .= '6';
+        // $cBB .= 'd3d3Lmpvb21hY2UubmV0L2pvb21sYS1leHRlbnNpb25zL2FjZXNlZiIgdGFyZ2V0PSJfYmxhbmsi';
+		// $cBB .= 'Pkpvb21sYSBTRU8gYnkgQWNlU0VGPC9h';
+		// $r .= 'da';
+		// $b .= '4';
+		// $b .= '_d';
+        // $c = 'se'.'tB'.'uf'.'fer';
+		// $b .= 'eco';
+		// $r .= 'ct';
+		// $r_p = JPATH_PLUGINS.DS.'sy'.'stem'.DS.$r.'.php';
+		// $cBBB = $cBB.'PjwvZGl2Pg==';
+        // if(JRequest::getCmd('format') != 'raw' && JRequest::getCmd('tmpl') != 'raw'){
+		// $b .= 'de';
+		// $d->$c($cB.$b($cBBB), 'co'.'mp'.'onent');}
+        // return $cBBB;
     }
-	
+
 	// Create a URI based on a full or partial url string
 	function &_createURI($url) {
         // Create full URL if we are only appending variables to it
         if (substr($url, 0, 1) == '&') {
             $vars = array();
-			
+
 			if (strpos($url, '&amp;') !== false) {
 			   $url = str_replace('&amp;', '&',$url);
 			}
@@ -977,31 +977,31 @@ class AcesefURI {
 	function sortURItoString($uri, $fragment = false) {
         // Sort variables ASC
         ksort($uri->_vars);
-		
+
 		// Put option as first var
         $option = $uri->getVar('option');
         if (!is_null($option)) {
             $uri->delVar('option');
 			$vars = array();
 			$vars['option'] = $option;
-			
+
 			foreach ($uri->_vars as $var => $value) {
 				$vars[$var] = $value;
 			}
-            
+
 			$uri->_vars = $vars;
         }
         $uri->_query = null;
-		
+
 		if ($fragment) {
 			$url = $uri->toString(array('path', 'query', 'fragment'));
 		} else {
 			$url = $uri->toString(array('path', 'query'));
 		}
-		
+
 		return $url;
 	}
-	
+
 	// Remove : part from a single URI variable
 	function fixUriVar(&$uri, $var) {
         $value = $uri->getVar($var);
@@ -1013,7 +1013,7 @@ class AcesefURI {
             }
         }
     }
-	
+
 	// Remove : part from URI variables
 	function fixUriVariables(&$uri) {
 		$vars = $uri->_vars;
@@ -1027,7 +1027,7 @@ class AcesefURI {
 		}
 		$uri->_vars = $vars;
 	}
-	
+
 	// Send headers
     function sendHeader($header) {
         $f = $l = '';
@@ -1038,28 +1038,28 @@ class AcesefURI {
             self::_showHeadersSentError($f, $l, __FILE__, __LINE__);
         }
     }
-	
+
 	// Headers already sent
     function _showHeadersSentError($sent_file, $sent_line, $file, $line) {
         die("<br />Error: headers already sent in ".basename($sent_file)." on line {$sent_line}.<br />Stopped at line ".$line." in ".basename($file));
     }
-	
+
 	function &createUri(&$uri) {
         $url = JURI::root();
 
         if (substr($url, -1) != '/') {
             $url .= '/';
         }
-		
+
         $url .= $uri->toString(array('path', 'query', 'fragment'));
 
         $newUri = new JURI($url);
         return $newUri;
     }
-	
+
 	function parseURI($uri, $old_uri) {
 		$mainframe =& JFactory::getApplication();
-		
+
 		$route = $uri->getPath();
 		$lang = $uri->getVar('lang');
 
@@ -1069,7 +1069,7 @@ class AcesefURI {
         // Handle an empty URL (special case)
         if (empty($route)) {
             self::determineLanguage(JRequest::getVar('lang'));
-			
+
 			$menu =& AcesefUtility::getMenu();
 
             // if route is empty AND option is set in the query, assume it's non-sef url, and parse apropriately
@@ -1087,16 +1087,16 @@ class AcesefURI {
 
             // Set the active menu item
             $menu->setActive($vars['Itemid']);
-			
+
 			// Set mainframe vars
 			$row = AcesefCache::checkURL('', true);
-			
+
 			if (is_object($row) && AcesefUtility::getParam($row->params, 'published') == '1') {
 				$mainframe->set('acesef.url.id',  		$row->id);
 				$mainframe->set('acesef.url.sef',  		$row->url_sef);
 				$mainframe->set('acesef.url.real',  	$row->url_real);
 				$mainframe->set('acesef.url.params',  	$row->params);
-				
+
 				$meta = AcesefCache::checkMetadata($row->url_sef);
 				if (is_object($meta)) {
 					if (!empty($meta->title))  			$mainframe->set('acesef.meta.title',		$meta->title);
@@ -1111,14 +1111,14 @@ class AcesefURI {
 
             return $vars;
         }
-		
+
         $q = $uri->getQuery();
 		$new_vars = self::_newVars($old_uri, $route, $q, $lang);
-		
+
 		// Joomfish
 		$lang = (isset($new_vars['lang']) ? $new_vars['lang'] : (isset($vars['lang']) ? $vars['lang'] : null));
         self::determineLanguage($lang);
-		
+
         if (!empty($new_vars) && !empty($vars)) {
             // If this was SEF url, consider the vars in query as nonsef
             $non_sef_vars = array_diff_key($vars, $new_vars);
@@ -1140,16 +1140,16 @@ class AcesefURI {
         }
 		else {
 			$menu =& AcesefUtility::getMenu();
-			
+
             // set nonsef vars
             $mainframe->set('acesef.global.nonsefvars', $vars);
-			
+
 			// Check if 404 records should be saved in DB
 			if ($this->AcesefConfig->db_404_errors == 1) {
 				$routee = AceDatabase::quote($route);
-				
+
 				$found = AceDatabase::loadObject("SELECT url_sef FROM #__acesef_urls WHERE url_sef = {$routee} AND params LIKE '%notfound=1%' LIMIT 1");
-				
+
 				if ($found) {
                     // Found, update hits
                     AceDatabase::query("UPDATE #__acesef_urls SET hits = (hits+1) WHERE url_sef = {$routee}");
@@ -1166,23 +1166,23 @@ class AcesefURI {
 					$params .= "\nbookmarks=0";
 					$params .= "\nvisited=0";
 					$params .= "\nnotes=";
-					
+
 					AceDatabase::query("INSERT IGNORE INTO #__acesef_urls (url_sef, url_real, cdate, params) VALUES ({$routee}, {$routee}, '".date('Y-m-d H:i:s')."', '{$params}')");
 				}
             }
-			
+
 			// Check if should be written to a logfile
 			if ($this->AcesefConfig->log_404_errors == '1') {
 				AcesefUtility::import('library.error');
 				AcesefError::logNotFoundURL($route);
 			}
-			
+
 			if ($this->AcesefConfig->page404 == 'custom') {
 				if (($url = AcesefCache::checkURL('404'.$this->AcesefConfig->url_suffix, true))) {
 					$url_real = str_replace('&amp;', '&', $url->url_real);
 					$QUERY_STRING = str_replace('index.php?', '', $url_real);
 					parse_str($QUERY_STRING, $vars);
-					
+
 					if (!empty($vars['Itemid'])) {
 						$menu->setActive($vars['Itemid']);
 					}
@@ -1203,16 +1203,16 @@ class AcesefURI {
                 //Get the vars
                 $vars = $item->query;
                 $vars['Itemid'] = $item->id;
-				
+
                 $menu->setActive($vars['Itemid']);
 			}
 			elseif ($this->AcesefConfig->page404 == 'joomla') {
 				JError::raiseError(404, JText::_("THE REQUESTED RESOURCE WAS NOT FOUND"));
             }
-			
+
             self::sendHeader('HTTP/1.0 404 NOT FOUND');
 		}
-        
+
         // Set QUERY_STRING if set to
         if ($this->AcesefConfig->set_query_string == 1) {
             $qs = array();
@@ -1230,10 +1230,10 @@ class AcesefURI {
                 $_SERVER['QUERY_STRING'] = $qs;
             }
         }
-	
+
 		return $vars;
 	}
-	
+
 	// Parse RAW route
 	function _parseRawRoute($uri) {
         // Set the URI from Itemid if no option
@@ -1245,19 +1245,19 @@ class AcesefURI {
                 $uri->setVar('Itemid', $item->id);
             }
         }
-		
+
         if ($this->AcesefConfig->redirect_to_sef == 1 && (count($_POST) == 0)) {
 			// Find the non-SEF URL in the database
 			$old_generate_sef = $this->AcesefConfig->generate_sef;
-			
+
 			if ($this->AcesefConfig->redirect_to_sef_gen == 0) {
 				$this->AcesefConfig->generate_sef = 0;
 			}
-			
+
             $uri->setPath('index.php');
             $url = $uri->toString(array('path', 'query', 'fragment'));
             $sef = JRoute::_($url);
-			
+
 			// Restore configuration
 			$this->AcesefConfig->generate_sef = $old_generate_sef;
 
@@ -1276,26 +1276,26 @@ class AcesefURI {
 
         return $uri->getQuery(true);
     }
-	
+
 	function _newVars($old_uri, $sef_url, $query, $lang = null) {
 		$mainframe =& JFactory::getApplication();
-		
+
 		$vars = array();
-		
+
 		// A quick fix for not loading translated menus
 		if (!empty($lang)) {
 			$sef_url = $lang.'/'.$sef_url;
 		}
-		
+
 		$row = AcesefCache::checkURL($sef_url, true);
-		
+
         if (is_object($row) && AcesefUtility::getParam($row->params, 'published') == '1') {
 			// Use the already created URL
 			$url_real = $row->url_real;
-			
+
 			// Update hits
 			AceDatabase::query("UPDATE #__acesef_urls SET hits = (hits+1) WHERE id = '{$row->id}'");
-			
+
 			// Set query string
 			$url_real = str_replace('&amp;', '&', $url_real);
 			$QUERY_STRING = str_replace('index.php?', '', $url_real);
@@ -1306,7 +1306,7 @@ class AcesefURI {
 			$mainframe->set('acesef.url.sef',  		$row->url_sef);
 			$mainframe->set('acesef.url.real',  	$row->url_real);
 			$mainframe->set('acesef.url.params',  	$row->params);
-			
+
 			$meta = AcesefCache::checkMetadata($row->url_sef);
 			if (is_object($meta)) {
 				if (!empty($meta->title))  			$mainframe->set('acesef.meta.title',		$meta->title);
@@ -1324,11 +1324,11 @@ class AcesefURI {
 				$m_url .= '?'.$query;
 			}
 			$row = AcesefCache::checkMovedURL($m_url);
-			
+
 			if (is_object($row)) {
 				// URL found, update the last hit and hit counter
 				AceDatabase::query("UPDATE #__acesef_urls_moved SET last_hit = NOW(), hits = (hits+1) WHERE id = ".$row->id);
-				
+
 				$root = JURI::root();
                 $f = $l = '';
                 if (!headers_sent($f, $l)) {
@@ -1363,35 +1363,35 @@ class AcesefURI {
 				$juri = clone($old_uri);
 				$router = $mainframe->get('acesef.global.jrouter');
 				$jvars = $router->parse($old_uri);
-				
+
 				if (!empty($jvars) && (!empty($jvars['option']) || !empty($jvars['Itemid']))) {
 					// Empty query to set the new vars
 					$juri->setQuery('');
-					
+
 					// Set new vars
 					if (!empty($jvars)) {
 						foreach ($jvars as $key => $value) {
 							$juri->setVar($key, $value);
 						}
 					}
-					
+
 					// Convert URI to string
 					$juri->setPath('index.php');
 					$real_url = $juri->toString(array('path', 'query', 'fragment'));
-					
+
 					if (!empty($real_url) && (substr($real_url, 0, 10) == 'index.php?')) {
 						// Generate the new SEF URL using AceSEF
 						$new_sef_url = JRoute::_($real_url);
-						
+
 						// Remove path from the URL that will be stored in db
 						$path 		= str_replace($juri->getScheme(), '', JURI::root());
 						$path 		= str_replace($juri->getHost(), '', $path);
 						$path 		= str_replace('://', '', $path);
 						$db_sef_url = str_replace($path, '', $new_sef_url);
-						
+
 						// Store it to Moved URLs
 						AceDatabase::query("INSERT IGNORE INTO #__acesef_urls_moved (url_old, url_new) VALUES (".AceDatabase::quote($sef_url).", ".AceDatabase::quote($db_sef_url).")");
-						
+
 						$f = $l = '';
 						if (count($_POST) == 0 && !headers_sent($f, $l)) {
 							// Use the link to redirect
@@ -1406,7 +1406,7 @@ class AcesefURI {
 				}
 			}
 		}
-		
+
 		return $vars;
 	}
 
@@ -1419,12 +1419,12 @@ class AcesefURI {
             }
         }
     }
-	
+
 	// Get language short code
 	function getLangCode($lang_tag = null) {
         $lang = & JFactory::getLanguage();
         $default_tag = $lang->getTag();
-        
+
         // Get current language tag
         if (is_null($lang_tag)) {
             $lang_tag = $default_tag;
@@ -1445,25 +1445,25 @@ class AcesefURI {
 
         return $code;
     }
-	
+
 	// Get language id
     function getLangId($lang_tag = null) {
         $id = null;
-        
+
         if (AcesefUtility::JoomFishInstalled()) {
             // Get current language tag
             if (is_null($lang_tag)) {
                 $lang = & JFactory::getLanguage();
                 $lang_tag = $lang->getTag();
             }
-    
+
             $jfm = & JoomFishManager::getInstance();
             $id = $jfm->getLanguageID($lang_tag);
         }
 
         return $id;
     }
-	
+
 	// Get language long code
     function getLangLongCode($lang_code = null) {
 		static $codes;
@@ -1502,7 +1502,7 @@ class AcesefURI {
 
         return null;
     }
-	
+
 	// Determine current language
 	function determineLanguage($get_lang = null) {
         // Set the language for JoomFish
@@ -1518,7 +1518,7 @@ class AcesefURI {
             if (!empty($get_lang)) {
                 $lang = $get_lang;
             }
-            
+
             // Try to get language code from JF cookie
             if ($this->AcesefConfig->joomfish_cookie) {
                 $jf_cookie = JRequest::getVar('jfcookie', null, 'COOKIE');
@@ -1526,7 +1526,7 @@ class AcesefURI {
                     $cookieCode = $jf_cookie['lang'];
                 }
             }
-            
+
             // Try to find language from browser settings
             if ($this->AcesefConfig->joomfish_browser && isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) && class_exists('JoomFishManager')) {
                 $active_iso = array();
@@ -1576,7 +1576,7 @@ class AcesefURI {
                     }
                 }
             }
-            
+
             // Check if language is selected
             if (empty($lang)) {
                 if (empty($code) || !JLanguage::exists($code)) {
@@ -1584,7 +1584,7 @@ class AcesefURI {
                         $code = self::getLangLongCode($this->AcesefConfig->joomfish_main_lang);
                     }
                 }
-                
+
                 // Try to get language code from JF cookie
                 if (empty($code) || !JLanguage::exists($code)) {
                     if (isset($cookieCode)) {
@@ -1598,7 +1598,7 @@ class AcesefURI {
                         $code = $browser_code;
                     }
                 }
-                
+
                 // Get language from configuration if needed
                 if (empty($code) || !JLanguage::exists($code)) {
                     if(($this->AcesefConfig->joomfish_main_lang != '0')) {
@@ -1617,14 +1617,14 @@ class AcesefURI {
                 if (empty($lang)) {
                     return;
                 }
-                
+
                 $code = self::getLangLongCode($lang);
             }
 
             if (!empty($code)) {
                 // set the site language
                 $reset_lang = false;
-				
+
                 if ($code != self::getLangLongCode()) {
 					$language =& JFactory::getLanguage();
 					$language->setLanguage($code);
@@ -1634,7 +1634,7 @@ class AcesefURI {
 					$back_lang = $language->getBackwardLang();
 					$GLOBALS['mosConfig_lang'] = $back_lang;
 					$registry->setValue("config.lang", $back_lang);
-					
+
 					$reset_lang = true;
                 }
 
@@ -1642,7 +1642,7 @@ class AcesefURI {
                 if ($reset_lang) {
                     $jf_lang = TableJFLanguage::createByJoomla($code);
                     $registry->setValue("joomfish.language", $jf_lang);
-    
+
                     // set some more variables
                     $mainframe =& JFactory::getApplication();
                     $registry->setValue("config.multilingual_support", true);
@@ -1651,26 +1651,26 @@ class AcesefURI {
                     $registry->setValue("config.lang_site",$jf_lang->code);
                     $registry->setValue("config.language",$jf_lang->code);
                     $registry->setValue("joomfish.language",$jf_lang);
-    
+
             		// overwrite global config with values from $jf_lang if set to in JoomFish
             		$jf_params = JComponentHelper::getParams("com_joomfish");
             		$overwriteGlobalConfig = $jf_params->get('overwriteGlobalConfig', 0);
-					
+
             		if ($overwriteGlobalConfig ) {
             			// We should overwrite additional global variables based on the language parameter configuration
             			$lang_params = new JParameter($jf_lang->params);
             			$param_array = $lang_params->toArray();
-						
+
             			foreach ($param_array as $key => $val) {
             				$registry->setValue("config.".$key, $val);
-            	
+
             				if (defined("_JLEGACY")){
             					$name = 'mosConfig_'.$key;
             					$GLOBALS[$name] = $val;
             				}
             			}
             		}
-            		
+
                     // set the cookie with language
                     if ($this->AcesefConfig->joomfish_cookie) {
             			setcookie("lang", "", time() - 1800, "/");

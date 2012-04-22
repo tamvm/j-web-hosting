@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Introduction for host, domain and VPS</name>
+	<author>Tam Vo</author>
+	<creationDate>04/22/2012</creationDate>
+	<authorEmail>vo.mita.ov@gmail.com</authorEmail>
+	<authorUrl>http://www.hostfreevietname.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Introduction for host, domain and VPS</description>
+	<files>
+		<filename module="mod_item_intro">mod_item_intro.php</filename>
+		<filename>mod_item_intro.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>css/style.css</filename>
+	</files>
+	<params />
+</install>
