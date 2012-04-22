@@ -165,7 +165,7 @@
 		<position>s5_tab17</position>
 		<position>s5_tab18</position>
 		<position>s5_tab19</position>
-		<position>s5_tab20</position>		
+		<position>s5_tab20</position>
 	</positions>
 	<params>
 		<param name="spacer1" type="spacer" default="Make sure to hover your mouse over each title in this column for a full description of what each field does." />

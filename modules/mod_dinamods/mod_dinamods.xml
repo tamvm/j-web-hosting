@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Dinamods</name>
+	<author>Jesus Vargas</author>
+	<creationDate>May 2008</creationDate>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>jesus@vargas.co.cr</authorEmail>
+	<authorUrl>joomla.vargas.co.cr</authorUrl>
+	<version>2.0.1</version>
+	<description>Displays your chosen modules in highly customizable tabs</description>
+	<files>
+		<filename module="mod_dinamods">mod_dinamods.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/top.php</filename>
+		<filename>tmpl/bottom.php</filename>
+		<filename>js/dinamods.js</filename>
+		<filename>js//index.html</filename>
+	</files>
+	<params>
+		<param name="position" type="text" default="dinamod" label="New Position" description="Define a new Module Position for your Tab Modules" />
+		<param name="tabs_pos" type="radio" default="top" label="Display Tabs" description="Choose where to show your tabs">
+			<option value="top">On Top</option>
+			<option value="bottom">On the Bottom</option>
+		</param>
+		<param name="change" type="radio" default="0" label="Switch Tabs" description="Choose how the user should switch the tabs">
+			<option value="0">OnClick</option>
+			<option value="1">OnMouseOver</option>
+		</param>
+		<param name="slider" type="radio" default="0" label="Auto Rotate?" description="Auto Rotate Tabs?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="speed" type="text" default="3000" label="Rotation Delay (ms)" description="Auto Rotation Delay (ms)" />
+		<param name="width" type="text" default="auto" label="Width" description="If not auto, specify px, em or %" />
+		<param name="height" type="text" default="auto" label="Height" description="If not auto, specify px, em or %" />
+		<param name="padding" type="text" default="5px" label="Padding" description="Main Area Padding (Specify px or em)" />
+		<param name="bgcolor" type="text" default="#FFFFFF" label="Background Color" description="Main Area Background Color" />
+		<param name="border" type="text" default="1px solid #CCCCCC" label="Border Style" description="Content Area Border Style" />
+		<param name="tab_bgcolor" type="text" default="#F6F6F6" label="Tabs Bg Color" description="Tabs Bg Color" />
+		<param name="tab_font" type="text" default="bold 13px Arial" label="Tabs Font Style" description="Tabs Font Style" />
+		<param name="tab_font_color" type="text" default="#000000" label="Tabs Font Color" description="Tabs Font Color" />
+		<param name="tab_padding" type="text" default="5px 11px 5px 11px" label="Tabs Padding" description="Tabs Padding (Top, Right, Bottom, Left)" />
+		<param name="tab_margin_left" type="text" default="0" label="Tabs Left Margin" description="Tabs Left Margin (Specify px or em)" />
+		<param name="tab_margin_right" type="text" default="0" label="Tabs Right Margin" description="Tabs Right Margin (Specify px or em)" />
+		<param name="sel_tab_bgcolor" type="text" default="#FFFFFF" label="Selected Tab Bg Color" description="Selected Tab Bg Color" />
+		<param name="sel_tab_font_color" type="text" default="#135CAE" label="Selected Tab Font Color" description="Selected Tab Font Color" />
+		<param name="hover_tab_bgcolor" type="text" default="#FFFFFF" label="hover Tab Bg Color" description="hover Tab Bg Color" />
+		<param name="hover_tab_font_color" type="text" default="#135CAE" label="hover Tab Font Color" description="hover Tab Font Color" />
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+		<param name="tracker" type="radio" default="0" label="Google Analytics Tracker?" description="Enable Google Analytics Tracker?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+	</params>
+</install>

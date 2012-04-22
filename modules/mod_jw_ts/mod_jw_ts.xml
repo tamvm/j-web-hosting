@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>Tabs &amp; Sliders (by JoomlaWorks)</name>
+	<author>JoomlaWorks</author>
+	<authorEmail>contact@joomlaworks.gr</authorEmail>
+	<authorUrl>www.joomlaworks.gr</authorUrl>
+	<copyright>Copyright (c) 2006 - 2012 JoomlaWorks Ltd. All rights reserved.</copyright>
+	<creationDate>January 27th, 2012</creationDate>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>2.0</version>
+	<description>MOD_JW_TS_TABS_AND_SLIDERS_MODULE_BY_JOOMLAWORKS</description>
+	<params addpath="/modules/mod_jw_ts/includes/elements">
+		<param name="moduleclass_sfx" type="text" default="" label="MOD_JW_TS_MODULE_CLASS_SUFFIX" description="MOD_JW_TS_MODULE_CLASS_SUFFIX_DESC" />
+    <param name="jwts_position" type="positions" default="" label="MOD_JW_TS_XML_POSITION" description="MOD_JW_TS_XML_POSITION" />
+    <param name="jwts_displaytype" type="radio" default="tabs" label="MOD_JW_TS_XML_DISPLAY_TYPE" description="MOD_JW_TS_XML_DISPLAY_TYPE_DESC">
+      <option value="tabs">MOD_JW_TS_XML_TABS</option>
+      <option value="sliders">MOD_JW_TS_XML_SLIDERS</option>
+    </param>
+    <param name="jwts_showmodtitle" type="radio" default="0" label="MOD_JW_TS_XML_MODULE_TITLE" description="MOD_JW_TS_XML_MODULE_TITLE_DESC">
+      <option value="1">MOD_JW_TS_SHOW</option>
+      <option value="0">MOD_JW_TS_HIDE</option>
+    </param>
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="MOD_JW_TS_CACHING" description="MOD_JW_TS_CACHING_DESC">
+			<option value="1">MOD_JW_TS_USE_GLOBAL</option>
+			<option value="0">MOD_JW_TS_NO_CACHING</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="MOD_JW_TS_CACHE_TIME" description="MOD_JW_TS_CACHE_TIME_DESC" />
+	</params>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_jw_ts/includes/elements">
+				<field name="moduleclass_sfx" type="text" default="" label="MOD_JW_TS_MODULE_CLASS_SUFFIX" description="MOD_JW_TS_MODULE_CLASS_SUFFIX_DESC" />
+		    <field name="jwts_position" type="positions" default="" label="MOD_JW_TS_XML_POSITION" description="MOD_JW_TS_XML_POSITION" />
+		    <field name="jwts_displaytype" type="radio" default="tabs" label="MOD_JW_TS_XML_DISPLAY_TYPE" description="MOD_JW_TS_XML_DISPLAY_TYPE_DESC">
+		      <option value="tabs">MOD_JW_TS_XML_TABS</option>
+		      <option value="sliders">MOD_JW_TS_XML_SLIDERS</option>
+		    </field>
+		    <field name="jwts_showmodtitle" type="radio" default="0" label="MOD_JW_TS_XML_MODULE_TITLE" description="MOD_JW_TS_XML_MODULE_TITLE_DESC">
+		      <option value="1">MOD_JW_TS_SHOW</option>
+		      <option value="0">MOD_JW_TS_HIDE</option>
+		    </field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="cache" type="list" default="0" label="MOD_JW_TS_CACHING" description="MOD_JW_TS_CACHING_DESC">
+					<option value="1">MOD_JW_TS_USE_GLOBAL</option>
+					<option value="0">MOD_JW_TS_NO_CACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="MOD_JW_TS_CACHE_TIME" description="MOD_JW_TS_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename module="mod_jw_ts">mod_jw_ts.php</filename>
+		<folder>includes</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_jw_ts.ini</language>
+		<language tag="en-GB">en-GB.mod_jw_ts.sys.ini</language>
+	</languages>
+</install>
